@@ -287,25 +287,7 @@ class Cover extends React.Component<any, any> {
 
       trackLiked = likedResponse[0];
     }
-<<<<<<< HEAD
     this.setState({ liked: trackLiked });
-=======
-    if (trackLiked != null && this.state.liked != trackLiked) {
-      if (this.state.likedTrack == this.state.currently_playing.item.id)
-        this.onLikedChange(trackLiked);
-      this.setState({
-        liked: trackLiked,
-        likedTrack: this.state.currently_playing.item.id,
-      });
-    }
-  }
-
-  onLikedChange(liked: boolean) {
-    this.props.lofi.showLikePopupWindow(
-      liked,
-      this.state.currently_playing.item
-    );
->>>>>>> parent of 2a7c77a... motherfucker finally works
   }
 
   closeApp() {
@@ -460,8 +442,8 @@ class Cover extends React.Component<any, any> {
         const BrowserWindow = remote.BrowserWindow;
         const visWindow = new BrowserWindow({
           webPreferences: {
-            nodeIntegration: true, 
-            enableRemoteModule: true
+            nodeIntegration: true,
+            enableRemoteModule: true,
           },
         });
         visWindow.on('close', () => {
@@ -627,7 +609,8 @@ class Cover extends React.Component<any, any> {
         />
         <RecreateChildOnPropsChange
           visType={this.state.visualizationType}
-          visId={this.props.visualizationId}>
+          visId={this.props.visualizationId}
+        >
           <Visualizer
             visId={this.props.visualizationId}
             currentlyPlaying={this.state.currently_playing}

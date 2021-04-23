@@ -66,14 +66,6 @@ class Lofi extends React.Component<any, any> {
     ipcRenderer.on('show-about', () => {
       this.showAboutWindow();
     });
-<<<<<<< HEAD
-=======
-
-    // Allow to open settings via IPC channel (e.g. triggered by a taskbar click)
-    ipcRenderer.on('show-like-popup', () => {
-      this.showLikePopupWindow(this.state.liked, this.state.currently_playing);
-    });
->>>>>>> parent of 2a7c77a... motherfucker finally works
   }
 
   reloadSettings() {
@@ -271,23 +263,6 @@ class Lofi extends React.Component<any, any> {
     this.setState({ showSettings: false });
   }
 
-<<<<<<< HEAD
-=======
-  showLikePopupWindow(liked: boolean, currently_playing: any) {
-    if (!this.state.showLikePopup) {
-      this.setState({
-        showLikePopup: true,
-        liked: liked,
-        currently_playing: currently_playing,
-      });
-    }
-  }
-
-  hideLikePopupWindow() {
-    this.setState({ showLikePopup: false });
-  }
-
->>>>>>> parent of 2a7c77a... motherfucker finally works
   render() {
     return (
       <div
@@ -297,7 +272,8 @@ class Lofi extends React.Component<any, any> {
           height: this.state.side_length,
           width: this.state.side_length,
           left: `calc(50% - ${this.state.side_length / 2}px)`,
-        }}>
+        }}
+      >
         <div className="top left grab-resize"></div>
         <div className="top right grab-resize"></div>
         <div className="bottom left grab-resize"></div>
@@ -305,31 +281,13 @@ class Lofi extends React.Component<any, any> {
         {this.state.showSettings ? (
           <WindowPortal
             onUnload={this.hideSettingsWindow.bind(this)}
-            name="settings">
+            name="settings"
+          >
             <Settings lofi={this} className="settings-wnd" />
           </WindowPortal>
         ) : null}
-<<<<<<< HEAD
-=======
-        {this.state.showLikePopup ? (
-          <WindowPortal
-            onUnload={this.hideLikePopupWindow.bind(this)}
-            name="like-popup"
-            className="click-through"
-          >
-            <LikePopup
-              liked={this.state.liked}
-              currentlyPlaying={this.state.currently_playing}
-              lofi={this}
-              className="like-popup-wnd"
-            ></LikePopup>
-          </WindowPortal>
-        ) : null}
->>>>>>> parent of 2a7c77a... motherfucker finally works
         {this.state.showAbout ? (
-          <WindowPortal
-            onUnload={this.hideAboutWindow.bind(this)}
-            name="about">
+          <WindowPortal onUnload={this.hideAboutWindow.bind(this)} name="about">
             <About lofi={this} className="about-wnd" />
           </WindowPortal>
         ) : null}
