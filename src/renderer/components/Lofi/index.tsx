@@ -66,6 +66,14 @@ class Lofi extends React.Component<any, any> {
     ipcRenderer.on('show-about', () => {
       this.showAboutWindow();
     });
+<<<<<<< HEAD
+=======
+
+    // Allow to open settings via IPC channel (e.g. triggered by a taskbar click)
+    ipcRenderer.on('show-like-popup', () => {
+      this.showLikePopupWindow(this.state.liked, this.state.currently_playing);
+    });
+>>>>>>> parent of 2a7c77a... motherfucker finally works
   }
 
   reloadSettings() {
@@ -263,6 +271,23 @@ class Lofi extends React.Component<any, any> {
     this.setState({ showSettings: false });
   }
 
+<<<<<<< HEAD
+=======
+  showLikePopupWindow(liked: boolean, currently_playing: any) {
+    if (!this.state.showLikePopup) {
+      this.setState({
+        showLikePopup: true,
+        liked: liked,
+        currently_playing: currently_playing,
+      });
+    }
+  }
+
+  hideLikePopupWindow() {
+    this.setState({ showLikePopup: false });
+  }
+
+>>>>>>> parent of 2a7c77a... motherfucker finally works
   render() {
     return (
       <div
@@ -284,6 +309,23 @@ class Lofi extends React.Component<any, any> {
             <Settings lofi={this} className="settings-wnd" />
           </WindowPortal>
         ) : null}
+<<<<<<< HEAD
+=======
+        {this.state.showLikePopup ? (
+          <WindowPortal
+            onUnload={this.hideLikePopupWindow.bind(this)}
+            name="like-popup"
+            className="click-through"
+          >
+            <LikePopup
+              liked={this.state.liked}
+              currentlyPlaying={this.state.currently_playing}
+              lofi={this}
+              className="like-popup-wnd"
+            ></LikePopup>
+          </WindowPortal>
+        ) : null}
+>>>>>>> parent of 2a7c77a... motherfucker finally works
         {this.state.showAbout ? (
           <WindowPortal
             onUnload={this.hideAboutWindow.bind(this)}

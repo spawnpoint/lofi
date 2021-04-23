@@ -1,0 +1,47 @@
+.like-popup-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 20px;
+  width: auto;
+  margin: 20px 20px;
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
+  padding-left: 5px;
+}
+
+html,
+body,
+.like-popup-wnd {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.like-popup-wnd {
+  display: inline-block;
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadein 0.420s;
+}
+
+#icon {
+  display: inline-block;
+  margin: 10px 10px;
+
+  svg {
+    height: 30px
+  }
+}
+
+#name {
+  display: inline-block;
+
+}

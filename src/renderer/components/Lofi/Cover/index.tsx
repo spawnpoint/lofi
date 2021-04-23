@@ -287,7 +287,25 @@ class Cover extends React.Component<any, any> {
 
       trackLiked = likedResponse[0];
     }
+<<<<<<< HEAD
     this.setState({ liked: trackLiked });
+=======
+    if (trackLiked != null && this.state.liked != trackLiked) {
+      if (this.state.likedTrack == this.state.currently_playing.item.id)
+        this.onLikedChange(trackLiked);
+      this.setState({
+        liked: trackLiked,
+        likedTrack: this.state.currently_playing.item.id,
+      });
+    }
+  }
+
+  onLikedChange(liked: boolean) {
+    this.props.lofi.showLikePopupWindow(
+      liked,
+      this.state.currently_playing.item
+    );
+>>>>>>> parent of 2a7c77a... motherfucker finally works
   }
 
   closeApp() {
